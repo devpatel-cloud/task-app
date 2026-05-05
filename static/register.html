@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Task Manager | Register</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="shell shell-auth">
+    <header class="topbar">
+        <a class="brand" href="index.html">Task Manager</a>
+        <div class="topbar-right">
+            <nav class="nav-links">
+                <a class="nav-link" href="index.html">Login</a>
+                <a class="nav-link active" href="register.html">Register</a>
+                <a class="nav-link" href="dashboard.html">Dashboard</a>
+            </nav>
+            <button class="theme-toggle" id="themeToggleBtn" type="button">Dark Mode</button>
+        </div>
+    </header>
+
+    <section class="hero auth-hero">
+        <div class="hero-panel">
+            <div class="eyebrow">Create Account</div>
+            <h1 class="hero-title">Start with a private task workspace.</h1>
+            <p class="hero-copy">
+                Create your profile once, then sign in anytime to manage tasks that only belong to you.
+            </p>
+            <div class="hero-grid">
+                <div class="mini-stat">
+                    <strong>Private</strong>
+                    <span>Every task is tied to your account.</span>
+                </div>
+                <div class="mini-stat">
+                    <strong>Secure</strong>
+                    <span>Passwords are hashed and API calls use JWT tokens.</span>
+                </div>
+                <div class="mini-stat">
+                    <strong>Useful</strong>
+                    <span>Search, filter, update, and delete tasks from your dashboard.</span>
+                </div>
+            </div>
+        </div>
+
+        <aside class="auth-panel">
+            <p class="section-label">Registration</p>
+            <h2 class="section-title">Create your account</h2>
+            <p class="section-copy">Use your name, email, password, and matching confirmation password.</p>
+
+            <div class="field-grid">
+                <div class="field">
+                    <label for="registerName">Name</label>
+                    <input id="registerName" type="text" placeholder="Your name" autocomplete="name">
+                </div>
+                <div class="field">
+                    <label for="registerEmail">Email Address</label>
+                    <input id="registerEmail" type="email" placeholder="name@example.com" autocomplete="email">
+                </div>
+                <div class="field">
+                    <label for="registerPassword">Password</label>
+                    <input id="registerPassword" type="password" placeholder="Minimum 6 characters" autocomplete="new-password">
+                </div>
+                <div class="field">
+                    <label for="confirmPassword">Confirm Password</label>
+                    <input id="confirmPassword" type="password" placeholder="Re-enter password" autocomplete="new-password">
+                </div>
+            </div>
+
+            <div class="actions">
+                <button class="btn" id="registerBtn">Register</button>
+                <a class="btn-secondary button-link" href="index.html">Back to Login</a>
+            </div>
+
+            <div id="authMessage" class="message"></div>
+        </aside>
+    </section>
+</div>
+
+<script src="auth-page.js"></script>
+</body>
+</html>

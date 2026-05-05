@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Task Manager | Dashboard</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="shell shell-dashboard">
+    <header class="topbar">
+        <a class="brand" href="index.html">Task Manager</a>
+        <div class="topbar-right">
+            <nav class="nav-links">
+                <a class="nav-link" href="index.html">Login</a>
+                <a class="nav-link" href="register.html">Register</a>
+                <a class="nav-link active" href="dashboard.html">Dashboard</a>
+            </nav>
+            <div class="user-chip" id="userInfo" hidden>
+                <span id="userName">User</span>
+                <small id="userEmail">email@example.com</small>
+            </div>
+            <button class="theme-toggle" id="themeToggleBtn" type="button">Dark Mode</button>
+        </div>
+    </header>
+
+    <main class="workspace always-visible">
+        <div class="workspace-head">
+            <div>
+                <p class="section-label">Task Workspace</p>
+                <h1 class="section-title">Professional Task Dashboard</h1>
+                <p>Manage your personal tasks with status tracking, filters, and quick actions.</p>
+            </div>
+            <div class="dashboard-actions">
+                <button class="btn-ghost" id="refreshBtn">Refresh Tasks</button>
+                <button class="btn-danger" id="logoutBtn">Logout</button>
+            </div>
+        </div>
+
+        <section class="stats-bar">
+            <div class="stat-card">
+                <span>Total Tasks</span>
+                <strong id="totalTasks">0</strong>
+            </div>
+            <div class="stat-card">
+                <span>Pending</span>
+                <strong id="pendingTasks">0</strong>
+            </div>
+            <div class="stat-card">
+                <span>Completed</span>
+                <strong id="completedTasks">0</strong>
+            </div>
+            <div class="stat-card">
+                <span>Completion Rate</span>
+                <strong id="completionRate">0%</strong>
+            </div>
+        </section>
+
+        <section class="toolbar create-toolbar">
+            <div class="create-toolbar-head">
+                <div>
+                    <p class="section-label">Create Task</p>
+                    <h3 class="panel-title">Add a new action item</h3>
+                    <p class="panel-copy">Capture your next task with priority, due date, and notes so your list feels actionable.</p>
+                </div>
+                <button class="btn create-submit-btn" id="createTaskBtn">Add Task</button>
+            </div>
+            <div class="create-form-grid">
+                <div class="field create-title-field">
+                    <label for="taskTitle">Task Title</label>
+                    <input id="taskTitle" type="text" placeholder="Prepare sprint report">
+                </div>
+                <div class="field create-priority-field">
+                    <label for="taskPriority">Priority</label>
+                    <select id="taskPriority">
+                        <option value="high">High</option>
+                        <option value="medium" selected>Medium</option>
+                        <option value="low">Low</option>
+                    </select>
+                </div>
+                <div class="field create-due-field">
+                    <label for="taskDueDate">Due Date</label>
+                    <input id="taskDueDate" type="datetime-local">
+                </div>
+                <div class="field create-status-field">
+                    <label for="taskStatus">Starting Status</label>
+                    <select id="taskStatus">
+                        <option value="pending">Pending</option>
+                        <option value="completed">Completed</option>
+                    </select>
+                </div>
+                <div class="field create-notes-field">
+                    <label for="taskDescription">Notes</label>
+                    <textarea id="taskDescription" rows="4" placeholder="Add context, checklist ideas, or next steps"></textarea>
+                </div>
+            </div>
+        </section>
+
+        <section class="workspace-grid">
+            <div class="stack">
+                <div class="toolbar">
+                    <p class="section-label">Filters</p>
+                    <h3 class="panel-title">Find what matters</h3>
+                    <p class="panel-copy">Search live, sort intelligently, and narrow the list by status or priority.</p>
+                    <div class="field-grid">
+                        <div class="field">
+                            <label for="searchText">Search</label>
+                            <input id="searchText" type="text" placeholder="Search task title">
+                        </div>
+                        <div class="form-split">
+                            <div class="field">
+                                <label for="filterStatus">Status</label>
+                                <select id="filterStatus">
+                                    <option value="">All Statuses</option>
+                                    <option value="pending">Pending</option>
+                                    <option value="completed">Completed</option>
+                                </select>
+                            </div>
+                            <div class="field">
+                                <label for="filterPriority">Priority</label>
+                                <select id="filterPriority">
+                                    <option value="">All Priorities</option>
+                                    <option value="high">High</option>
+                                    <option value="medium">Medium</option>
+                                    <option value="low">Low</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="field">
+                            <label for="sortBy">Sort By</label>
+                            <select id="sortBy">
+                                <option value="newest">Newest First</option>
+                                <option value="oldest">Oldest First</option>
+                                <option value="priority">Priority</option>
+                                <option value="due_soon">Due Soon</option>
+                            </select>
+                        </div>
+                        <div class="inline-group">
+                            <button class="btn-secondary" id="applyFiltersBtn">Apply Filters</button>
+                            <button class="btn-ghost" id="resetFiltersBtn">Reset Filters</button>
+                            <button class="btn-danger" id="clearCompletedBtn">Clear Completed</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tasks-panel">
+                <div class="tasks-head">
+                    <div>
+                        <p class="section-label">Your Tasks</p>
+                        <h3 class="panel-title">Live task list</h3>
+                        <p>Only the logged-in user can see and manage these tasks.</p>
+                    </div>
+                    <div class="tasks-head-meta">
+                        <span class="summary-pill" id="summaryText">0 tasks in view</span>
+                    </div>
+                </div>
+                <div id="taskMessage" class="message"></div>
+                <div id="taskList" class="task-list"></div>
+            </div>
+        </section>
+    </main>
+</div>
+
+<div class="modal-shell hidden" id="editModal">
+    <div class="modal-card">
+        <div class="modal-head">
+            <div>
+                <p class="section-label">Edit Task</p>
+                <h3 class="panel-title">Update task details</h3>
+            </div>
+            <button class="icon-btn" id="closeEditModalBtn" aria-label="Close edit modal">x</button>
+        </div>
+        <div class="field-grid">
+            <div class="field">
+                <label for="editTaskTitle">Task Title</label>
+                <input id="editTaskTitle" type="text" placeholder="Task title">
+            </div>
+            <div class="field">
+                <label for="editTaskDescription">Notes</label>
+                <textarea id="editTaskDescription" rows="4" placeholder="Add task details"></textarea>
+            </div>
+            <div class="form-split">
+                <div class="field">
+                    <label for="editTaskPriority">Priority</label>
+                    <select id="editTaskPriority">
+                        <option value="high">High</option>
+                        <option value="medium">Medium</option>
+                        <option value="low">Low</option>
+                    </select>
+                </div>
+                <div class="field">
+                    <label for="editTaskStatus">Status</label>
+                    <select id="editTaskStatus">
+                        <option value="pending">Pending</option>
+                        <option value="completed">Completed</option>
+                    </select>
+                </div>
+            </div>
+            <div class="field">
+                <label for="editTaskDueDate">Due Date</label>
+                <input id="editTaskDueDate" type="datetime-local">
+            </div>
+        </div>
+        <div class="modal-actions">
+            <button class="btn-ghost" id="cancelEditBtn">Cancel</button>
+            <button class="btn" id="saveEditBtn">Save Changes</button>
+        </div>
+    </div>
+</div>
+
+<div class="modal-shell hidden" id="confirmModal">
+    <div class="modal-card modal-card-small">
+        <div class="modal-head">
+            <div>
+                <p class="section-label">Confirm Action</p>
+                <h3 class="panel-title" id="confirmTitle">Delete task?</h3>
+            </div>
+            <button class="icon-btn" id="closeConfirmModalBtn" aria-label="Close confirm modal">x</button>
+        </div>
+        <p class="panel-copy" id="confirmMessage">This action cannot be undone.</p>
+        <div class="modal-actions">
+            <button class="btn-ghost" id="cancelConfirmBtn">Cancel</button>
+            <button class="btn-danger" id="confirmActionBtn">Confirm</button>
+        </div>
+    </div>
+</div>
+
+<div class="toast-stack" id="toastStack"></div>
+
+<script src="dashboard-page.js"></script>
+</body>
+</html>

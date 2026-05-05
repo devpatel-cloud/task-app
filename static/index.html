@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Task Manager | Login</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="shell shell-auth">
+    <header class="topbar">
+        <a class="brand" href="index.html">Task Manager</a>
+        <div class="topbar-right">
+            <nav class="nav-links">
+                <a class="nav-link active" href="index.html">Login</a>
+                <a class="nav-link" href="register.html">Register</a>
+                <a class="nav-link" href="dashboard.html">Dashboard</a>
+            </nav>
+            <button class="theme-toggle" id="themeToggleBtn" type="button">Dark Mode</button>
+        </div>
+    </header>
+
+    <section class="hero auth-hero">
+        <div class="hero-panel">
+            <div class="eyebrow">Secure Access</div>
+            <h1 class="hero-title">Welcome back to your task workspace.</h1>
+            <p class="hero-copy">
+                Register a new account or sign in to open your personal dashboard with protected task management.
+            </p>
+            <div class="hero-grid">
+                <div class="mini-stat">
+                    <strong>FastAPI</strong>
+                    <span>Backend APIs with JWT authentication and user-specific data.</span>
+                </div>
+                <div class="mini-stat">
+                    <strong>Organized</strong>
+                    <span>Separate pages and scripts for cleaner navigation and maintenance.</span>
+                </div>
+                <div class="mini-stat">
+                    <strong>Ready</strong>
+                    <span>Demo tasks appear automatically after login for quick testing.</span>
+                </div>
+            </div>
+        </div>
+
+        <aside class="auth-panel">
+            <p class="section-label">Authentication</p>
+            <h2 class="section-title">Login to your account</h2>
+            <p class="section-copy">Enter your email and password to open your protected dashboard.</p>
+
+            <div class="field-grid">
+                <div class="field">
+                    <label for="loginEmail">Email Address</label>
+                    <input id="loginEmail" type="email" placeholder="name@example.com" autocomplete="email">
+                </div>
+                <div class="field">
+                    <label for="loginPassword">Password</label>
+                    <input id="loginPassword" type="password" placeholder="Your password" autocomplete="current-password">
+                </div>
+            </div>
+
+            <div class="actions">
+                <button class="btn" id="loginBtn">Login</button>
+                <a class="btn-secondary button-link" href="register.html">Create Account</a>
+            </div>
+
+            <div id="authMessage" class="message"></div>
+        </aside>
+    </section>
+</div>
+
+<script src="auth-page.js"></script>
+</body>
+</html>
